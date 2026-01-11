@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap");
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  min-height: 100dvh;
+  font-family: "Martian Mono", monospace;
+}
+:root {
+  /* bg colors */
+  --primary-color: #f4f4f4;
+  --secondary-color: #ecf95a;
+  --dark-color: #191314;
+  --light-color: #ffffff;
+  /* text colors */
+  --primary-text-color: #191314;
+  --secondary-text-color: #ecf95a;
+  --light-text-color: #fffffa;
+  --dark-text-color: #191314;
+}
+/* button universal styles */
+button {
+  font-size: 16px;
+  font-weight: 400;
+  height: 40px;
+  transition: 300ms ease-out;
+  border-radius: 10px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+/* a universal styles */
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+/* scroller styles */
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: var(--primary-color);
+}
+::-webkit-scrollbar-track {
+  background-color: var(--primary-color);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-color);
+}
