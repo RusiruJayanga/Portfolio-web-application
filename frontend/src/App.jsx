@@ -7,6 +7,7 @@ const App = () => {
   return (
     <div>
       <ScrollToTop />
+      <p>Hi there</p>
     </div>
   );
 };
