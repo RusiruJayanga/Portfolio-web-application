@@ -7,6 +7,7 @@
 body {
   min-height: 100dvh;
   font-family: "Martian Mono", monospace;
+  background-color: var(--primary-color);
 }
 :root {
   /* bg colors */
