@@ -7,7 +7,7 @@ import NavigationBar from "../src/components/navigation/NavigationBar";
 
 const App = () => {
   return (
-    <div>
+    <div className="antialiased">
       <ScrollToTop />
       <NavigationBar />
     </div>
