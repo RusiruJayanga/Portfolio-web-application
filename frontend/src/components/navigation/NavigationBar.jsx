@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 //GSAP animation
 import gsap from "gsap";
 
@@ -10,22 +10,29 @@ const NavigationBar = () => {
   const [isActive, setIsActive] = useState("home");
 
   //menu GSAP animation
-  const navRef = useRef(null);
-  useEffect(() => {
-    if (isOpen) {
-      gsap.to(navRef.current, {
+    if (isOpen === true) {
+      gsap.to( "#nav-slider-container", {
+        display: "absolute",
+        x: "0%",
+        duration: 0,
+      });
+      gsap.to( "#nav-slider", {
+        delay: "absolute",
         x: "0%",
         duration: 0.5,
         ease: "power3.out",
       });
-    } else {
-      gsap.to(navRef.current, {
+    } else if (isOpen === false) {
+      gsap.to( "#nav-slider-container", {
         x: "100%",
-        duration: 0.5,
+        duration: 0,
+      });
+      gsap.to("#nav-slider", {
+        x: "100%",
+        duration: 0.3,
         ease: "power3.in",
       });
     }
-  }, [isOpen]);
 
   return (
     <nav className="relative w-full h-15 flex items-center z-10000 text-base font-normal">
@@ -56,14 +63,11 @@ const NavigationBar = () => {
         onClick={() => setIsOpen(!isOpen)}
       ></i>
       <div
-        className={`${
-          isOpen ? "block" : "hidden"
-        } fixed w-screen h-screen top-0 left-0 bg-black/20 z-11000 `}
-        
-      >
-        <div className="w-2/3 h-full ml-auto bg-white sm:w-1/3"
-        style={{ transform: "translateX(100%)" }}
-        ref={navRef}>
+        className="hidden fixed w-screen h-screen rounded-lg top-0 left-0 bg-black/30 z-1000"
+        id="nav-slider-container"
+      ></div>
+        <div className="fixed w-2/3 h-screen top-0 right-0 ml-auto bg-white sm:w-1/3 z-11000"
+        id="nav-slider">
           <i
             className="bi bi-x-lg size-10 flex items-center justify-center text-3xl p-7 rounded-full focus:bg-[#f4f4f4]"
             onClick={() => setIsOpen(!isOpen)}
@@ -106,7 +110,6 @@ const NavigationBar = () => {
             </a>
           </div>
         </div>
-      </div>
     </nav>
   );
 };
