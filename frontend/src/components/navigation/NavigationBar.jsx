@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 //GSAP animation
 import gsap from "gsap";
 
@@ -10,32 +10,49 @@ const NavigationBar = () => {
   const [isActive, setIsActive] = useState("home");
 
   //menu GSAP animation
-    if (isOpen === true) {
+  const navRef = useRef(null);
+  useEffect(() => {
+    if (!navRef.current) return;
+     if (isOpen === true) {
       gsap.to( "#nav-slider-container", {
-        display: "absolute",
+        display: "block",
         x: "0%",
         duration: 0,
       });
       gsap.to( "#nav-slider", {
-        delay: "absolute",
+        delay: "block",
         x: "0%",
         duration: 0.5,
         ease: "power3.out",
       });
+      gsap.to( "#nav-close", {
+        duration: 0.5,
+        rotate: 90,
+        ease: "power3.out",
+      });
     } else if (isOpen === false) {
       gsap.to( "#nav-slider-container", {
+        display: "none",
         x: "100%",
         duration: 0,
       });
       gsap.to("#nav-slider", {
+        delay: "none",
         x: "100%",
         duration: 0.3,
         ease: "power3.in",
       });
+      gsap.to("#nav-close", {
+        duration: 0.3,
+        rotate: 0,
+        ease: "power3.out",
+      });
     }
+  }, [isOpen]);
+    
 
   return (
-    <nav className="relative w-full h-15 flex items-center z-10000 text-base font-normal">
+    <nav className="relative w-full h-15 flex items-center z-10000 text-base font-normal" ref={navRef}>
       <img className="h-10 ml-2 absolute" src="logo.png" alt="logo" />
 
       {/*lg menu */}
@@ -59,18 +76,19 @@ const NavigationBar = () => {
 
       {/*sm menu */}
       <i
-        className="bi bi-list size-10 flex items-center justify-center text-3xl ml-auto mr-2 rounded-full focus:bg-[#f4f4f4] lg:hidden "
+        className="bi bi-list size-10 flex items-center justify-center text-2xl ml-auto mr-2 rounded-full focus:bg-[#f4f4f4] lg:hidden "
         onClick={() => setIsOpen(!isOpen)}
       ></i>
       <div
-        className="hidden fixed w-screen h-screen rounded-lg top-0 left-0 bg-black/30 z-1000"
+        className="hidden fixed w-screen h-screen rounded-lg top-0 left-0 bg-black/30 z-1000 lg:hidden"
         id="nav-slider-container"
       ></div>
-        <div className="fixed w-2/3 h-screen top-0 right-0 ml-auto bg-white sm:w-1/3 z-11000"
+        <div className="fixed w-6/10 h-screen top-0 right-0 ml-auto bg-white sm:w-1/3 z-11000 lg:hidden"
         id="nav-slider">
           <i
-            className="bi bi-x-lg size-10 flex items-center justify-center text-3xl p-7 rounded-full focus:bg-[#f4f4f4]"
+            className="bi bi-x-lg size-10 flex items-center justify-center text-2xl p-7 rounded-full focus:bg-[#f4f4f4]"
             onClick={() => setIsOpen(!isOpen)}
+            id="nav-close"
           ></i>
           <div className="w-2/3 ml-auto mr-2 mt-30 flex flex-col text-black/60 ">
             <a
