@@ -4,12 +4,14 @@ import "./App.css";
 import ScrollToTop from "../src/config/ScrollToTop";
 //main components
 import NavigationBar from "../src/components/navigation/NavigationBar";
+import Hero from "../src/components/hero/Hero";
 
 const App = () => {
   return (
-    <div className="antialiased">
+    <div className="antialiased cursor-default">
       <ScrollToTop />
       <NavigationBar />
+      <Hero />
     </div>
   );
 };
