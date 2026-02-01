@@ -13,13 +13,13 @@ body {
   /* bg colors */
   --primary-color: #f4f4f4;
   --secondary-color: #ecf95a;
-  --dark-color: #191314;
+  --dark-color: #000000;
   --light-color: #ffffff;
   /* text colors */
-  --primary-text-color: #191314;
+  --primary-text-color: #000000;
   --secondary-text-color: #ecf95a;
-  --light-text-color: #fffffa;
-  --dark-text-color: #191314;
+  --light-text-color: #ffffff;
+  --dark-text-color: #000000;
 }
 /* button universal styles */
 button {
