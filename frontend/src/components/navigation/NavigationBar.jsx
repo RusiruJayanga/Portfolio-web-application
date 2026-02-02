@@ -13,19 +13,22 @@ const NavigationBar = () => {
 
   //menu GSAP animation
   const navRef = useRef(null);
+  const navLgRef = useRef(null);
 
   useLayoutEffect(() => {
     if (!navRef.current) return;
     
-    gsap.to(navRef.current, {
-    top: "8px",
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    gsap.to(navLgRef.current, {
+    duration: 2,
+    marginTop: "8px",
+    backgroundColor: "#ecf95a",
     scrollTrigger: {
-      trigger: navRef.current,
-      start: "bottom 60px",
+      trigger: navLgRef.current,
+      start: "bottom 50px",
       end: "bottom 0px",
       scrub: true,
     },
+    ease: "power3.out",
   });
   }, []);
 
@@ -70,10 +73,10 @@ const NavigationBar = () => {
     
 
   return (
-    <nav className="relative w-screen h-15 flex items-center z-10000 text-base font-normal lg:w-fit lg:sticky lg:ml-auto lg:mr-auto lg:rounded-[30px]" ref={navRef}>
+    <nav className="relative w-screen h-15 flex justify-center items-center z-10000 text-base font-normal lg:sticky lg:top-0" ref={navRef}>
 
       {/*lg menu */}
-      <div className="hidden lg:flex w-fit ml-auto mr-auto gap-5 text-black/60 lg:pr-10 lg:pl-10">
+      <div className="hidden lg:flex w-fit h-full items-center gap-5 text-black/60 rounded-[30px] px-10" ref={navLgRef}>
         <a className={`${isActive === "home" ? "text-black font-bold" : ""} hover:text-black transition-colors duration-200 ease-out`} href="#" onClick={()=> setIsActive("home")}>
           Home
         </a>
@@ -91,7 +94,7 @@ const NavigationBar = () => {
         </a>
       </div>
 
-      {/*sm menu */}
+      {/*mobile menu */}
       <i
         className="bi bi-list size-10 flex items-center justify-center text-2xl ml-auto mr-2 rounded-full focus:bg-[#f4f4f4] lg:hidden "
         onClick={() => setIsOpen(!isOpen)}
