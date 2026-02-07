@@ -11,7 +11,7 @@ const NavigationBar = () => {
   //menu active
   const [isActive, setIsActive] = useState("home");
 
-  //menu GSAP animation
+  //GSAP animation
   const navRef = useRef(null);
   const navLgRef = useRef(null);
 
@@ -21,7 +21,7 @@ const NavigationBar = () => {
     gsap.to(navLgRef.current, {
     duration: 2,
     marginTop: "8px",
-    backgroundColor: "#ecf95a",
+    backgroundColor: "#ffffff",
     scrollTrigger: {
       trigger: navLgRef.current,
       start: "bottom 50px",
@@ -73,10 +73,10 @@ const NavigationBar = () => {
     
 
   return (
-    <nav className="relative w-screen h-15 flex justify-center items-center z-10000 text-base font-normal lg:sticky lg:top-0" ref={navRef}>
+    <nav className="relative w-full h-15 flex justify-center items-center z-10000 text-base font-normal lg:sticky lg:top-0" ref={navRef} >
 
       {/*lg menu */}
-      <div className="hidden lg:flex w-fit h-full items-center gap-5 text-black/60 rounded-[30px] px-10" ref={navLgRef}>
+      <div className="hidden lg:flex w-fit h-full items-center gap-5 text-black/60 rounded-[30px] px-10 " ref={navLgRef}>
         <a className={`${isActive === "home" ? "text-black font-bold" : ""} hover:text-black transition-colors duration-200 ease-out`} href="#" onClick={()=> setIsActive("home")}>
           Home
         </a>
@@ -148,11 +148,11 @@ const NavigationBar = () => {
               Projects<i className="bi bi-chevron-right"></i>
             </a>
           </div>
-          <div className="w-full absolute bottom-10 flex gap-5 text-2xl text-black/60">
-            <i className="bi bi-github ml-auto"></i>
-            <i className="bi bi-linkedin"></i>
-            <i className="bi bi-instagram"></i>
-            <i className="bi bi-google mr-auto"></i>
+          <div className="w-full absolute bottom-20 flex gap-5 text-2xl text-black/60">
+            <a className="ml-auto focus:text-black" href="#"><i className="bi bi-github"></i></a>
+            <a className="focus:text-black" href="#"><i className="bi bi-linkedin"></i></a>
+            <a className="focus:text-black" href="#"><i className="bi bi-instagram"></i></a>
+            <a className="mr-auto focus:text-black" href="#"><i className="bi bi-google"></i></a>
           </div>
         </div>
     </nav>
