@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useLayoutEffect } from "react";
 //GSAP animation
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,6 +9,7 @@ gsap.registerPlugin(TextPlugin);
 function Hero() {
  //GSAP animation
  const heroRef = useRef(null);
+ const heroRotateRef = useRef(null);
 
  useEffect(() => {
     if (!heroRef.current) return;
@@ -29,7 +30,7 @@ function Hero() {
      });
 
     gsap.fromTo("#hero-main-left", {
-     x: "-20%",
+     x: "-25%",
      }
      , {
      duration: 3,
@@ -38,7 +39,7 @@ function Hero() {
      });
 
     gsap.fromTo("#hero-main-right", {
-     x: "20%",
+     x: "25%",
      }
      , {
      duration: 3,
@@ -46,12 +47,25 @@ function Hero() {
      ease: "power3.out",
      });
 
+}, []);
 
+useLayoutEffect(() => {
+    if (!heroRef.current) return;
+    
+    gsap.to(heroRotateRef.current, {
+    rotateZ: 600,
+    scrollTrigger: {
+      trigger: heroRotateRef.current,
+      start: "bottom 110%",
+      end: "bottom 0%",
+      scrub: 5,
+    },
+});
 }, []);
 
   return (
-    <section className='p-2 grid gap-4 mx-auto sm:flex sm:max-w-200 items-center lg:max-w-300 lg:h-150 lg:mt-10' ref={heroRef}>
-        <div className='w-full h-50 relative flex justify-center items-center overflow-hidden bg-black bg-cover bg-center p-2 rounded-3xl sm:hidden'>
+    <section className='p-2 grid gap-4 mx-auto sm:flex sm:relative sm:max-w-200 items-center lg:max-w-300 lg:h-150 lg:mt-10' ref={heroRef}>
+        <div className='w-full h-50 relative flex justify-center items-center overflow-hidden bg-black bg-cover bg-center rounded-3xl sm:hidden'>
             <img className='w-70 rounded-2xl brightness-80' src="hero/hero-main-sm.jfif" alt="logo" id="hero-main-sm" />
             <img className="absolute w-45 left-0" src="hero/left.png" alt="left" id="hero-main-left"/>
             <img className="absolute w-45 right-0" src="hero/right.png" alt="right" id="hero-main-right" />
@@ -72,12 +86,14 @@ function Hero() {
             </div>
             <div className='flex gap-2 mt-10 lg:mt-12'><button className='flex w-37 border-2 border-[#ecf95a] rounded-md bg-[#ecf95a] text-[#191314] hover:bg-white hover:text-[#191314] focus:bg-white focus:text-[#191314] '>Download CV</button><button className='flex w-37 border-2 border-[#191314] rounded-md bg-white text-[#191314] hover:bg-[#ecf95a] hover:text-[#191314] hover:border-[#ecf95a] focus:bg-[#ecf95a] focus:text-[#191314] focus:border-[#ecf95a] '>Contact</button></div>
         </div>
-        <div className='hidden sm:flex relative items-center overflow-hidden justify-center flex-1 h-110 bg-black p-2 rounded-3xl lg:h-full' id="hero-main">
+        <div className='hidden sm:flex flex-1 h-110 relative items-center overflow-hidden justify-center bg-black p-2 rounded-3xl lg:h-full' id="hero-main">
             <img className='w-[70%] rounded-2xl brightness-80' src="hero/hero-main.jfif" alt="logo" id="hero-main-sm" />
             <img className="absolute w-[48%] left-0" src="hero/left.png" alt="left" id="hero-main-left"/>
             <img className="absolute w-[48%] right-0" src="hero/right.png" alt="right" id="hero-main-right" />
         </div>
-        
+        <div className='hidden sm:flex absolute right-1/4 top-[85%] p-2 bg-[#f4f4f4] rounded-full'>
+          <img className='w-30 lg:w-50' src="batch.png" alt="batch" ref={heroRotateRef} id="rotate-batch"/>
+        </div>
     </section>
   )
 }

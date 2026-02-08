@@ -19,7 +19,6 @@ const NavigationBar = () => {
     if (!navRef.current) return;
     
     gsap.to(navLgRef.current, {
-    duration: 2,
     marginTop: "8px",
     backgroundColor: "#ffffff",
     scrollTrigger: {
@@ -96,11 +95,11 @@ const NavigationBar = () => {
 
       {/*mobile menu */}
       <i
-        className="bi bi-list size-10 flex items-center justify-center text-2xl ml-auto mr-2 rounded-full focus:bg-[#f4f4f4] lg:hidden "
+        className="bi bi-list size-10 flex items-center justify-center text-3xl ml-auto mr-2 rounded-full focus:bg-white lg:hidden "
         onClick={() => setIsOpen(!isOpen)}
       ></i>
       <div
-        className="hidden fixed w-screen h-screen rounded-lg top-0 left-0 bg-black/30 z-1000"
+        className="hidden fixed w-full h-screen top-0 left-0 bg-black/30 z-1000"
         onClick={() => setIsOpen(!isOpen)}
         id="nav-slider-container"
       ></div>
@@ -111,7 +110,7 @@ const NavigationBar = () => {
             onClick={() => setIsOpen(!isOpen)}
             id="nav-close"
           ></i>
-          <div className="w-2/3 ml-auto mr-auto mt-30 flex flex-col text-black/60 ">
+          <div className="w-2/3 mx-auto mt-30 flex flex-col text-black/60 ">
             <a
               className={`${isActive === "home" ? "text-black font-bold" : ""} w-full p-2 rounded-sm flex justify-between focus:bg-[#f4f4f4] `}
               href="#"
