@@ -25,7 +25,8 @@ const NavigationBar = () => {
       trigger: navLgRef.current,
       start: "bottom 50px",
       end: "bottom 0px",
-      scrub: true,
+      scrub: 1,
+      toggleActions: "play reverse play reverse",
     },
     ease: "power3.out",
   });
@@ -36,12 +37,12 @@ const NavigationBar = () => {
      if (isOpen === true) {
       gsap.to( "#nav-slider-container", {
         display: "block",
-        x: "0%",
+        xPercent: 0,
         duration: 0,
       });
       gsap.to( "#nav-slider", {
         display: "block",
-        x: "0%",
+        xPercent: 0,
         duration: 0.5,
         ease: "power3.out",
       });
@@ -53,12 +54,12 @@ const NavigationBar = () => {
     } else if (isOpen === false) {
       gsap.to( "#nav-slider-container", {
         display: "none",
-        x: "100%",
+        xPercent: 100,
         duration: 0,
       });
       gsap.to("#nav-slider", {
         display: "none",
-        x: "100%",
+        xPercent: 100,
         duration: 0.3,
         ease: "power3.in",
       });

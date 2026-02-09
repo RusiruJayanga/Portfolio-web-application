@@ -30,20 +30,20 @@ function Hero() {
      });
 
     gsap.fromTo("#hero-main-left", {
-     x: "-25%",
+     xPercent: -25,
      }
      , {
      duration: 3,
-     x: 0,
+     xPercent: 0,
      ease: "power3.out",
      });
 
     gsap.fromTo("#hero-main-right", {
-     x: "25%",
+     xPercent: 25,
      }
      , {
      duration: 3,
-     x: 0,
+     xPercent: 0,
      ease: "power3.out",
      });
 
@@ -64,7 +64,7 @@ useLayoutEffect(() => {
 }, []);
 
   return (
-    <section className='p-2 grid gap-4 mx-auto sm:flex sm:relative sm:max-w-200 items-center lg:max-w-300 lg:h-150 lg:mt-10' ref={heroRef}>
+    <section className='p-2 flex flex-col gap-4 mx-auto sm:flex-row sm:relative sm:max-w-200 items-center lg:max-w-300 lg:h-150 lg:mt-10' ref={heroRef}>
         <div className='w-full h-50 relative flex justify-center items-center overflow-hidden bg-black bg-cover bg-center rounded-3xl sm:hidden'>
             <img className='w-70 rounded-2xl brightness-80' src="hero/hero-main-sm.jfif" alt="logo" id="hero-main-sm" />
             <img className="absolute w-45 left-0" src="hero/left.png" alt="left" id="hero-main-left"/>
