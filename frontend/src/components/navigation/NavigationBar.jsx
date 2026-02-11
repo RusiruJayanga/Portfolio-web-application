@@ -80,7 +80,7 @@ const NavigationBar = () => {
         <a className={`${isActive === "home" ? "text-black font-bold" : ""} hover:text-black transition-colors duration-200 ease-out`} href="#" onClick={()=> setIsActive("home")}>
           Home
         </a>
-        <a className={`${isActive === "about" ? "text-black font-bold" : ""} hover:text-black transition-colors duration-200 ease-out`} href="#" onClick={()=> setIsActive("about")}>
+        <a className={`${isActive === "about" ? "text-black font-bold" : ""} hover:text-black transition-colors duration-200 ease-out`} href="#about" onClick={()=> setIsActive("about")}>
           About
         </a>
         <a className={`${isActive === "education" ? "text-black font-bold" : ""} hover:text-black transition-colors duration-200 ease-out`} href="#" onClick={()=> setIsActive("education")}>
@@ -121,7 +121,7 @@ const NavigationBar = () => {
             </a>
             <a
               className={`${isActive === "about" ? "text-black font-bold" : ""} w-full mt-2 p-2 rounded-sm flex justify-between focus:bg-[#f4f4f4]`}
-              href="#"
+              href="#about"
               onClick={()=> setIsActive("about") || setIsOpen(!isOpen)}
             >
               About<i className="bi bi-chevron-right"></i>

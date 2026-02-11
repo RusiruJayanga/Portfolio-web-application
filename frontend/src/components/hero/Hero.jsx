@@ -53,12 +53,12 @@ useLayoutEffect(() => {
     if (!heroRef.current) return;
     
     gsap.to(heroRotateRef.current, {
-    rotateZ: 600,
+    rotateZ: 300,
     scrollTrigger: {
       trigger: heroRotateRef.current,
       start: "bottom 110%",
       end: "bottom 0%",
-      scrub: 5,
+      scrub: 2,
     },
 });
 }, []);

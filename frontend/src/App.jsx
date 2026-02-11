@@ -19,6 +19,7 @@ let smoother = ScrollSmoother.create({
 import NavigationBar from "../src/components/navigation/NavigationBar";
 import Hero from "../src/components/hero/Hero";
 import About from "../src/components/about/About";
+import Education from "../src/components/education/Education";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           <div id="content">
             <Hero />
             <About />
+            <Education />
           </div>
         </div>
     </div>
